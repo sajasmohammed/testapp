@@ -1,0 +1,56 @@
+$blue: #2E3191;
+$purple: #5357d4;
+$grey:  #d1d1d1;
+$darkgrey:#989898;
+$white: #ffffff;
+$red: #ec0020;
+
+$f12: 12px;
+$f14: 14px;
+$f18: 18px;
+$f22: 22px;
+$f30: 30px;
+$Bold: bold;
+$semiBold: 600;
+$mBold: 700;
+
+$br8: 8px;
+$br16: 16px;  
+$br24: 24px;
+
+// Break points
+$breakpoints: (
+  'exsmall_320':(max-width: 325px),
+  'exsmall':(max-width: 385px),
+  'exsmall_400':(max-width: 400px),
+  'exsmall_574':(max-width: 574px),
+  'small': (max-width: 767px),
+  'medium': (max-width: 991px),
+  'medium_lg': (max-width: 1024px),
+  'large': (max-width: 1199px),
+  'ex_large_max':(max-width: 1440px),
+  'large_max':(max-width: 1160px),
+  'ex_large_min':(min-width: 1441px),
+  'ex_large_medium':(max-width: 1600px),
+  'ex_large_medium_min':(min-width: 1601px),
+  'ex_large':(max-width: 1920px),
+  'ex_large_4k':(max-width: 2560px),
+  'min768':(min-width: 768px),
+  'min_height_720':(min-height:720px),
+  'min_height_900':(min-height:900px),
+  'min_height_800':(min-height:800px),
+  'max_height_650':(max-height:650px),
+  ) !default;
+
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media #{inspect(map-get($breakpoints, $breakpoint))} {
+      @content;
+    }
+  }
+
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+    +"Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
